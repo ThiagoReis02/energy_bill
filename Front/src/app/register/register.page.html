@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastra-se</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <ion-item>
+      <ion-label color="primary" position="floating">
+        E-mail:
+      </ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div text-center class="error" *ngIf="form.controls.email.errors && form.controls.email.touched">
+      <p *ngIf="form.controls.email.errors.required">O campo é obrigatório.</p>
+    </div>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">
+        Nome completo:
+      </ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+    <div text-center class="error" *ngIf="form.controls.nome.errors && form.controls.nome.touched">
+      <p *ngIf="form.controls.nome.errors.required">O campo é obrigatório.</p>
+    </div>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">
+        Data nascimento:
+      </ion-label>
+      <ion-input type="text" formControlName="dt_Nascimento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">
+        Senha:
+      </ion-label>
+      <ion-input type="text" formControlName="senha" type="password"></ion-input>
+    </ion-item>
+    <div text-center class="error" *ngIf="form.controls.senha.errors && form.controls.senha.touched">
+      <p *ngIf="form.controls.senha.errors.required">O campo é obrigatório.</p>
+      <p *ngIf="form.controls.senha.errors.minlength">O campo deve ter no minimo 6 caracteres.</p>
+      <p *ngIf="form.controls.senha.errors.maxlength">O campo deve ter no máximo 18 caracteres.</p>
+    </div>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">
+        Confirmar Senha:
+      </ion-label>
+      <ion-input type="text" formControlName="confirmarSenha" type="password"></ion-input>
+    </ion-item>
+    <div text-center class="error" *ngIf="form.controls.confirmarSenha.errors && form.controls.confirmarSenha.touched">
+      <p *ngIf="form.controls.confirmarSenha.errors.required">O campo é obrigatório.</p>
+      <p *ngIf="form.controls.confirmarSenha.errors.minlength">O campo deve ter no minimo 6 caracteres.</p>
+      <p *ngIf="form.controls.confirmarSenha.errors.maxlength">O campo deve ter no máximo 18 caracteres.</p>
+    </div>
+
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">
+      <ion-ripple-effect></ion-ripple-effect>
+      Adicionar
+    </ion-button>
+  </form>
+
+</ion-content>
